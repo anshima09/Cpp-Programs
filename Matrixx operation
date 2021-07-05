@@ -1,0 +1,150 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+class matrix
+{
+	int m1[3][3],m2[3][3],m3[3][3],i=0,j=0,sum=0;
+	public:
+		void getData();
+		void displayData();
+		void addMatrix();
+		void mulMatrix();
+		void transposeMatrix();
+};
+
+void matrix::getData()
+{
+	cout<<endl<<"Enter elements of first matrix=";
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			cin>>m1[i][j];
+		}
+	}
+    cout<<endl<<"Enter elements of second matrix=";
+    for(i=0;i<3;i++)
+    {
+    	for(j=0;j<3;j++)
+    	{
+    		cin>>m2[i][j];
+		}
+	}
+}
+
+void matrix::displayData() 
+{
+	cout<<endl<<"Elements of frist matrix !";
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			cout<<m1[i][j]<<"\t";
+		}
+		cout<<endl;
+	}
+	cout<<endl<<"Elements of second matrix !";
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			cout<<m2[i][j]<<"\t";
+		}
+		cout<<endl;
+	}
+}
+
+void matrix::addMatrix()
+{
+	cout<<endl<<"Addition of both matrix ";
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			m3[i][j]=m1[i][j]+m2[i][j];
+			cout<<m3[i][j]<<"\t";
+		}
+		cout<<endl;
+	}
+	
+}
+
+void matrix::mulMatrix()
+{
+	cout<<endl<<"Multiplicationb of both matrxi ";
+	//code to multiply matrix
+	
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			sum=sum+m1[i][j]*m2[i][j];
+			m3[i][j]=sum;
+		}
+	}
+	//code to print multiplication 
+		for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			cout<<m3[i][j]<<"\t";
+		}
+		cout<<endl;
+    }
+}
+
+void matrix::transposeMatrix()
+{
+	cout<<endl<<"Transpose of a matrixx !";
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			m3[i][j]=m1[j][i];
+		}
+		cout<<endl;
+	}
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			cout<<m3[i][j]<<"\t";
+		}
+		cout<<endl;
+	}
+}
+
+int main()
+{
+	int choice;
+	matrix mat;
+	mat.getData();
+	mat.displayData();
+	do
+	{
+		cout<<endl<<"1.Addition of Matrix !";
+		cout<<endl<<"2.Multiplication of Matrix !";
+		cout<<endl<<"3.Transpose of Matrix !";
+		cout<<endl<<"4.Exit !";
+		cout<<endl<<"Enter your choice =";
+		cin>>choice;
+		switch(choice)
+		{
+			case 1:
+				mat.addMatrix();
+				break;
+			case 2:
+			    mat.mulMatrix();
+				break;
+			case 3:
+			    mat.transposeMatrix();
+				break;
+			case 4:
+				exit(0);
+			default:
+			    cout<<endl<<"You enetred wrong choice !"; 
+	    }
+    }while(1);
+    return 0;
+}
