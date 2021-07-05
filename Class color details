@@ -1,0 +1,44 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class circle
+{
+	private:
+		double radius;
+		string color;
+	public:
+	    circle(double r=1.0,string c="Red")
+		{
+			radius=r;
+			color=c;
+		}	
+		double getradius()
+		{
+			return radius;
+		}
+		string getcolor()
+		{
+			return color;
+		}
+		double getarea(){
+			return (3.14*radius*radius);
+		}
+};
+
+int main()
+{
+	circle c1(1.2,"Blue");
+	cout<<"Radius ="<<c1.getradius();
+	cout<<"\nArea ="<<c1.getarea();
+	cout<<"\nColor ="<<c1.getcolor();
+	circle c2(3.4);
+	cout<<"\n\nRadius ="<<c2.getradius();
+	cout<<"\nArea ="<<c2.getarea();
+	cout<<"\nColor ="<<c2.getcolor();
+	circle c3;
+	cout<<"\n\nRadius ="<<c3.getradius();
+	cout<<"\nArea ="<<c3.getarea();
+	cout<<"\nColor ="<<c3.getcolor();
+	return 0;
+}
