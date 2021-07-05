@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+class date
+{
+	int dd,mm,yy;
+	public:
+		date()
+		{
+			dd=9;
+			mm=6;
+			yy=2003;
+		}
+		date  operator++()
+		{
+			date d1;
+			d1.dd=++dd;
+			d1.mm=++mm;
+			d1.yy=++yy;
+			return d1;
+		}
+		friend istream &operator>>(istream &input,date &D)
+		{
+			cout<<endl<<"Enter date,month and year =";
+			input>>D.dd>>D.mm>>D.yy;
+			return input;
+		}
+		friend ostream &operator<<(ostream &output,date &D)
+		{
+			output<<"Date = "<<D.dd<<"/"<<D.mm<<"/"<<D.yy;
+			return output;
+		}
+		
+};
+int main()
+{
+	date D1,d1,D2;
+	cout<<D1<<endl;
+	d1=++D1;
+	cout<<D1;
+	cin>>D2;
+	cout<<D2<<endl;
+	return 0;
+}
