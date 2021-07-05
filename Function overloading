@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+float volume(float r);
+int volume(int l,int b,int h);
+float volume(float r,int h);
+
+int main()
+{
+	cout<<endl<<"Volume of sphere ="<<volume(2.5);
+	cout<<endl<<"Volume of cuboid ="<<volume(3,5,8);
+	cout<<endl<<"Volume of cylinder ="<<volume(3.2,7);
+	return 0;
+}
+
+float volume(float r)
+{
+	return (4/3*3.14*r*r*r);
+}
+
+int volume(int l,int b,int h)
+{
+	return (l*b*h);
+}
+
+float volume(float r,int h)
+{
+	return (3.14*r*r*h);
+}
