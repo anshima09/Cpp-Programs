@@ -1,0 +1,96 @@
+#include<iostream>
+#include<istream>
+#include<ostream>
+
+using namespace std;
+
+class complex
+{
+	int real,imag;
+	public:
+		complex()
+		{
+		}
+		complex(int r,int i)
+		{
+			real=r;
+			imag=i;
+		}
+		friend ostream& operator<<(ostream  &dout,complex &C)
+		{
+				dout<<C.real<<"+i";
+	        	dout<<C.imag<<"\n";
+		        return dout;
+		}
+		friend istream& operator>>(istream &din,complex &C)
+		{
+				cout<<"Enter real part=";
+		        din>>C.real;
+	           	cout<<endl<<"Enter imaginary part=";
+		        din>>C.imag;
+		        return din;
+		}
+		void display() const;
+		friend complex operator-(complex c1,complex c2);
+	    friend complex operator+(complex c1,complex c2);
+		
+		//preincreament !!!!
+		complex operator++()
+		{
+			complex temp;
+			temp.real=++real;
+			temp.imag=++imag;
+		}
+		//post increament !!!
+		complex operator++(int x)
+		{
+			complex temp;
+			temp.real=real++;
+			temp.imag=imag++;
+			return temp;
+		} 
+};
+
+    complex operator-(complex c1,complex c2)
+    {
+    	complex temp;
+    	temp.real=c1.real-c2.real;
+    	temp.imag=c1.imag-c2.imag;
+    	return temp;
+	}
+	complex operator+(complex c1,complex c2)
+	{
+		complex temp;
+			temp.real=c1.real+c2.real;
+			temp.imag=c1.imag+c2.imag;
+			return temp;
+	}
+	//code to display statement!!
+	void complex::display() const
+	{
+		cout<<real<<"+i"<<imag;
+	}
+	
+		int main()
+	{
+		complex C1;
+		complex C2(3,2);
+		complex C3,C4;
+		cin>>C1;
+		cout<<endl<<"First complex number =";
+		cout<<C1;     //operator>>(cin,C1)
+		cout<<endl<<"Second complex number =";
+		cout<<C2;
+		C3=C1+C2;      //C1.operator+(C2)
+		C4=C1-C2;     //operator+(C1,C2)
+		C3=C1++;
+		cout<<endl<<"Complex number after addition =";
+		cout<<C3;
+		cout<<endl<<"Complex after subtraction=";
+		cout<<C4;
+		cout<<endl<<"Increament of first complex number !!";
+		C3.display();
+		cout<<endl<<endl<<"After increament=";
+		C1.display();
+		return 0;
+	}
