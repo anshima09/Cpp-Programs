@@ -1,0 +1,86 @@
+#include<iostream>
+
+
+using namespace std;
+
+class Time
+{
+        private:
+                int hours, minutes;
+        public:
+                Time()
+                {
+                        hours=0;
+                        minutes=0;
+                }
+                friend int operator>>(istream &input, Time &t)  //Overloading >> Operator
+                {
+                        cout<<"\n Enter Hours   :  ";
+                        input>>t.hours;
+                        cout<<"\n Enter Minutes :  ";
+                        input>>t.minutes;
+                        t.hours = t.hours + t.minutes / 60;
+                        t.minutes %= 60;
+                        if(t.hours >= 25)
+                                return 1;
+                        else
+                                return 0;
+                }
+                friend ostream& operator<<(ostream &Output, Time &t)    //Overloading << Operator
+                {
+                        Output<<"\n Hours   :  "<<t.hours;
+                        Output<<"\n Minutes :  "<<t.minutes;
+                }
+               
+                Time operator+(Time T)
+                {
+                	Time temp;
+                	temp.hours=hours+T.hours;
+                	temp.minutes=minutes+T.minutes;
+                	if(temp.minutes>=60)
+                	{
+                		temp.hours++;
+                		temp.minutes-=60;
+					}
+					return temp;
+				}
+				bool operator >(const Time& T) {
+         if(hours > T.hours) {
+            return true;
+         }
+         
+         return false;
+      }
+};
+int main()
+{
+        Time t, t1,t2;
+        cout<<"\n Enter First Time ";
+        cout<<"\n -------------------- ";
+        if(cin>>t)
+        {
+                cout<<"\n Invalid Time ";
+                return 0;
+        }
+        cout<<"\n First Time ";
+        cout<<t;
+        cout<<"\n\n Enter Second Time ";
+        cout<<"\n -------------------- ";
+        if(cin>>t1)
+        {
+                cout<<"\n Invalid Time ";
+                return 0;
+        }
+        cout<<"\n Second Time ";
+        cout<<t1;
+       
+        cout<<"\n\n Times after addition !";
+        t2=t+t1;
+        cout<<t2;
+         if(t>t1) {
+      cout <<endl<<"First time  is more than second one " << endl;
+   } else {
+      cout <<endl<<"Second time is more than first time " << endl;
+   }
+        return 0;
+}
