@@ -1,0 +1,61 @@
+#include<iostream>
+
+using namespace std;
+
+class flight
+{
+	int flightno;
+	char des[10];
+	float distance;
+	float fuel;
+	float calfuel()
+  {
+  	
+		if(distance<=1000)
+		{
+			fuel=500;
+		}
+		if(distance>1000 && distance<=2000)
+		{
+			fuel=1100;
+		}
+		if(distance>2000)
+		{
+		    fuel=2200;
+	    }
+	    return fuel;
+     
+  }
+	
+	public:
+		void feedinfo()
+{
+			cout<<endl<<"Enter flight number = ";
+			cin>>flightno;
+			cout<<endl<<"Enter your designation =";
+			cin>>des;
+			cout<<endl<<"Enter distance you have to travel=";
+			cin>>distance;
+			fuel=calfuel();
+}
+	
+		void showinfo()
+{
+			cout<<endl<<"The Flight number ="<<flightno;
+			cout<<endl<<"Your Designation ="<<des;
+			cout<<endl<<"Distance you have to travel ="<<distance;
+			cout<<endl<<"Amount of fuel you required ="<<fuel;
+}
+		
+};  
+
+
+
+int main()
+{
+	flight f;
+	f.feedinfo();
+	f.showinfo();
+	
+	return 0;
+}
