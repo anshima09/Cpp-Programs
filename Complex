@@ -1,0 +1,49 @@
+#include<iostream>
+
+using namespace std;
+
+class complex
+{
+	int real,imag;
+	public:
+		complex()
+		{
+			real=0;
+			imag=0;
+		}
+		complex(int r,int i)
+		{
+			real=r;
+			imag=i;
+		}
+		void display();
+		friend complex sum(complex C1,complex C2);
+				
+};
+void complex:: display()
+{
+			cout<<real<<"+i"<<imag<<""<<endl;
+}
+     complex sum(complex C1,complex C2)
+	{
+	    	complex ans;
+			ans.real=C1.real+C2.real;
+			ans.imag=C1.imag+C2.imag;
+			return ans;
+	}
+
+
+int main()
+{
+	complex c1(5,7);
+	cout<<endl<<"First complex number =";
+	c1.display();
+	complex c2(1,2);
+	cout<<endl<<"Second vomplex number =";
+	c2.display();
+	complex c3;
+	c3=sum(c1,c2);
+	cout<<endl<<"Sum of two complex number=";
+	c3.display();
+	return 0;
+}
