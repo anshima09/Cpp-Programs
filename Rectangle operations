@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+
+class Rectangle
+{
+	float length,width;
+	public:
+		void setlength(float);
+		void setwidth(float);
+		void show();
+		float perimeter();
+		float area();
+		int sameArea(Rectangle);
+};
+
+void Rectangle::setlength(float len)
+{
+	length=len;
+}
+void Rectangle::setwidth(float wid)
+{
+	width=wid;
+}
+void Rectangle::show()
+{
+	cout<<endl<<"Length ="<<length;
+	cout<<endl<<"Width ="<<width;
+}
+float Rectangle::perimeter()
+{
+	return (2*length+2*width);
+}
+float Rectangle::area()
+{
+	return length*width;
+}
+int Rectangle::sameArea(Rectangle R)
+{
+	float areaf = length*width;
+	float areas = R.length*R.width;
+	if(areaf==areas)
+	return 1;
+	else 
+	return 0;
+}
+
+int main()
+{
+	Rectangle first;
+	Rectangle second;
+	first.setlength(5);
+	first.setwidth(2.5);
+	second.setlength(5);
+	second.setwidth(18.9);
+	cout<<"First rectangle !";
+	first.show();
+	cout<<endl<<"Area ="<<first.area();
+	cout<<endl<<"Perimeter ="<<first.perimeter();
+	
+	
+	cout<<endl<<"\nSecond Rectangle !";
+	second.show();
+	cout<<endl<<"Area ="<<second.area();
+	cout<<endl<<"Perimeter ="<<second.perimeter();
+	if(first.sameArea(second))
+	
+	cout<<endl<<"\nRectangles have the same area\n";
+	else
+	cout<<endl<<"\nRectangles do not have same area\n";
+	
+	first.setlength(15);
+	first.setwidth(6.3);
+	cout<<endl<<"\nFirst Rectangle !";
+	first.show();
+	cout<<endl<<"Area ="<<first.area();
+	cout<<endl<<"Perimeter ="<<first.perimeter();
+	
+	
+	cout<<endl<<"\nSecond Rectangle !";
+	second.show();
+	cout<<endl<<"Area ="<<second.area();
+	cout<<endl<<"Perimeter ="<<second.perimeter();
+	
+	if(first.sameArea(second))
+	cout<<endl<<"\nRectangles have the same area\n";
+	else
+	cout<<endl<<"\nRectangles do not have same arrea\n";
+	return 0;
+}
