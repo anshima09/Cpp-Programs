@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+class student 
+{
+	private:
+		int admno;
+		char sname[30];
+		float eng,maths,science;
+		float total;
+    public:
+    	int ctotal();
+    	void takeData();
+    	void ShowData();		
+};
+void student:: takeData()
+{     
+	        cout<<endl<<"Enter name of student : ";
+			cin>>sname;
+			cout<<endl<<"Enter admissin number of student : ";
+			cin>>admno;
+		    cout<<endl<<"Enter english marks of student :";
+			cin>>eng;
+			cout<<endl<<"Enter maths marks of student :";
+			cin>>maths;
+		   	cout<<endl<<"Enter science marks of student :";
+		   	cin>>science;
+		   	total=ctotal();
+		   //	cout<<endl<<"\nTotal marks of student :"<<total;
+}
+int student::ctotal()
+{
+			total=eng+maths+science;
+			return (total);
+}	
+void student:: ShowData()
+{
+	        cout<<endl<<"Name of student :"<<sname;
+			cout<<endl<<"Admission number of studuent :"<<admno;
+			cout<<endl<<"Marks of english of student :"<<eng;
+			cout<<endl<<"Marks of maths of student :"<<maths;
+			cout<<endl<<"Marks of Scienceof student :"<<science;
+			cout<<endl<<"Total marks of student :"<<total;
+}
+
+int main()
+{
+	student s[100];
+	int i,n;
+	cout<<"Enter total number of students =";
+	cin>>n;
+	for(i=0;i<n;i++)
+ {
+ 	cout<<endl<<"Enter deials of "<<i+1<<" student !!";
+	s[i].takeData();
+ }
+    for(i=0;i<n;i++)
+ {	
+    cout<<endl<<"Details of "<<i+1<<" student !!";
+	s[i].ShowData();
+ }
+	return 0;
+}
